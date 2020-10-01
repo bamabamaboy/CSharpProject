@@ -1,0 +1,6 @@
+C:\Git\CSharpProject\060_Functions\Functions\bin\Debug\Functions.exe.config
+C:\Git\CSharpProject\060_Functions\Functions\bin\Debug\Functions.exe
+C:\Git\CSharpProject\060_Functions\Functions\bin\Debug\Functions.pdb
+C:\Git\CSharpProject\060_Functions\Functions\obj\Debug\Functions.csprojResolveAssemblyReference.cache
+C:\Git\CSharpProject\060_Functions\Functions\obj\Debug\Functions.exe
+C:\Git\CSharpProject\060_Functions\Functions\obj\Debug\Functions.pdb

@@ -1,0 +1,5 @@
+C:\Git\CSharpProject\010_HelloWorld\HelloWorld\bin\Debug\HelloWorld.exe.config
+C:\Git\CSharpProject\010_HelloWorld\HelloWorld\bin\Debug\HelloWorld.exe
+C:\Git\CSharpProject\010_HelloWorld\HelloWorld\bin\Debug\HelloWorld.pdb
+C:\Git\CSharpProject\010_HelloWorld\HelloWorld\obj\Debug\HelloWorld.exe
+C:\Git\CSharpProject\010_HelloWorld\HelloWorld\obj\Debug\HelloWorld.pdb

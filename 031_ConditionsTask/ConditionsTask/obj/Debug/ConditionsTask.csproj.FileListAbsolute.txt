@@ -1,0 +1,6 @@
+C:\Git\CSharpProject\031_ConditionsTask\ConditionsTask\bin\Debug\ConditionsTask.exe.config
+C:\Git\CSharpProject\031_ConditionsTask\ConditionsTask\bin\Debug\ConditionsTask.exe
+C:\Git\CSharpProject\031_ConditionsTask\ConditionsTask\bin\Debug\ConditionsTask.pdb
+C:\Git\CSharpProject\031_ConditionsTask\ConditionsTask\obj\Debug\ConditionsTask.csprojResolveAssemblyReference.cache
+C:\Git\CSharpProject\031_ConditionsTask\ConditionsTask\obj\Debug\ConditionsTask.exe
+C:\Git\CSharpProject\031_ConditionsTask\ConditionsTask\obj\Debug\ConditionsTask.pdb

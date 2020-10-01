@@ -1,0 +1,5 @@
+C:\Git\CSharpProject\020_Variables\Variables\bin\Debug\Variables.exe.config
+C:\Git\CSharpProject\020_Variables\Variables\bin\Debug\Variables.exe
+C:\Git\CSharpProject\020_Variables\Variables\bin\Debug\Variables.pdb
+C:\Git\CSharpProject\020_Variables\Variables\obj\Debug\Variables.exe
+C:\Git\CSharpProject\020_Variables\Variables\obj\Debug\Variables.pdb

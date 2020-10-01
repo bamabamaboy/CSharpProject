@@ -1,0 +1,6 @@
+C:\Git\CSharpProject\021_VariablesTask\VariablesTask\bin\Debug\VariablesTask.exe.config
+C:\Git\CSharpProject\021_VariablesTask\VariablesTask\bin\Debug\VariablesTask.exe
+C:\Git\CSharpProject\021_VariablesTask\VariablesTask\bin\Debug\VariablesTask.pdb
+C:\Git\CSharpProject\021_VariablesTask\VariablesTask\obj\Debug\VariablesTask.csprojResolveAssemblyReference.cache
+C:\Git\CSharpProject\021_VariablesTask\VariablesTask\obj\Debug\VariablesTask.exe
+C:\Git\CSharpProject\021_VariablesTask\VariablesTask\obj\Debug\VariablesTask.pdb
