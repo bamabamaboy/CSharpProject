@@ -10,6 +10,12 @@ namespace CyclesTask
     {
         static void Main(string[] args)
         {
+
+            Console.Write("Введите любое число с клавиатуры: ");
+            float num = Convert.ToSingle(Console.ReadLine());
+
+            Console.WriteLine("Вы ввели данное число - {0}", num);
+
             Console.ReadKey();
         }
     }
