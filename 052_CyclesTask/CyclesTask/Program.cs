@@ -10,12 +10,23 @@ namespace CyclesTask
     {
         static void Main(string[] args)
         {
+            //Пример бесконечного цикла с доп. условиями (1 - пропуск одной итерации цикла, 0 - выход из цикла)
+            bool end = false;
+            do
+            {
+                Console.Write("Введите любое число с клавиатуры: ");
+                float num = Convert.ToSingle(Console.ReadLine());
 
-            Console.Write("Введите любое число с клавиатуры: ");
-            float num = Convert.ToSingle(Console.ReadLine());
+                if (num == 0) end = true;
 
-            Console.WriteLine("Вы ввели данное число - {0}", num);
+                if (end == false)
+                {
+                    if (num == 1) continue;
+                    Console.WriteLine("One more iteration");
+                }
+            } while (end != true);
 
+            Console.WriteLine("Конец!");
             Console.ReadKey();
         }
     }
