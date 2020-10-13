@@ -11,6 +11,47 @@ namespace FilesAndExceptions
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("-----------------------------------------");
+            
+            //Примеры работы с файлами
+            workWithFiles();
+
+            Console.WriteLine("-----------------------------------------");
+
+            //Пример работы с исключениями
+            workWithExceptions();
+
+            Console.WriteLine("-----------------------------------------");
+            Console.ReadKey();
+        }
+
+        private static void workWithExceptions() {
+            
+            bool end = false;
+            do {
+                Console.Write("Введите число от 0 до 255: ");
+
+                byte num = 0;
+                try {
+                    num = Convert.ToByte(Console.ReadLine());
+                    end = true;
+                } catch (OverflowException) {
+                    Console.WriteLine("Введите число в диапазоне от 0 до 255!");
+                } catch (FormatException) {
+                    Console.WriteLine("Введите число!");
+                }
+
+                Console.WriteLine("-----------------------------------------");
+
+                if (end) {
+                    Console.WriteLine("Вы ввели: {0}", num);
+                }
+
+            } while (!end);
+        }
+
+        private static void workWithFiles()
+        {
             string file1 = @"Start Text.txt";
             string text1 = "В одной далёкой, далёкой галактике...Жили были Джедаи...";
 
@@ -19,7 +60,7 @@ namespace FilesAndExceptions
 
             string file3 = @"End Text.txt";
             string text3 = "И воцарился мир в далёкой галактике...";
-            
+
             //Примеры работы с файлами:
             //Пример работы с файлами через класс File (без потока данных)
             simpleFile(file1, text1);
@@ -29,12 +70,11 @@ namespace FilesAndExceptions
 
             //Самые главные классы для работы с файлами
             mainStreams(file3, text3);
-
-            Console.ReadKey();
-
         }
 
-        private static void mainStreams(string fileName, string text) {
+
+        private static void mainStreams(string fileName, string text) 
+        {
             StreamWriter sw = File.CreateText(fileName);
             sw.WriteLine(text);
 
@@ -48,14 +88,14 @@ namespace FilesAndExceptions
 
         private static void dataStreams(string fileName, string text)
         {
-            //Запись из потока данных
+            //Запись в поток данных
             FileStream fs = File.Open(fileName, FileMode.Create);
             byte[] writeStrByte = Encoding.Default.GetBytes(text);
 
             fs.Write(writeStrByte, 0, writeStrByte.Length);
 
             //Чтение из потока данных
-            fs.Position = 0;    //Возвращаем на нулевую позицию в файле
+            fs.Position = 0;        //Возвращаем на нулевую позицию в файле
 
             byte[] readStrByte = new byte[writeStrByte.Length];
 
@@ -66,12 +106,11 @@ namespace FilesAndExceptions
 
             Console.WriteLine(Encoding.Default.GetString(readStrByte));
 
-            fs.Close();     //После всех операций с файлом, его необходимо закрыть
+            fs.Close();             //После всех операций с файлом, его необходимо закрыть
         }
 
         private static void simpleFile(string fileName, string text)
         {
-            //Пример работы с файлами через класс File (без потока данных)
             //Запись в файл
             File.WriteAllText(fileName, text);
 
