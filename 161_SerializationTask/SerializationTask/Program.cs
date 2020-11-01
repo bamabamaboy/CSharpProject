@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization.Formatters.Binary;   //Для сохранения объектов в бинарном формате
 using System.Xml.Serialization;                         //Для сохранения объектов в формате XML
-//using System.Runtime.Serialization;
-//using System.Runtime.Serialization.Json;              //Для сохранения объектов в формате JSON (нет в старой версии C#)
+using System.Runtime.Serialization.Json;                //Для сохранения объектов в формате JSON (нет в старой версии C#)
 using System.IO;
 
 namespace SerializationTask {
@@ -26,7 +25,7 @@ namespace SerializationTask {
             Console.WriteLine("----------------------------------------------------------");
             
             //Сохранение объектов в файл в формате JSON
-            //jsonSave();
+            jsonSave();
 
             Console.WriteLine("----------------------------------------------------------");
 
@@ -99,35 +98,36 @@ namespace SerializationTask {
         }
 
         public static void jsonSave() {
-            Data one = new Data(345);
-            Data[] data = { one };
+            Data dataOne = new Data("Первый кластер", 865, 34564, 896);
+            Data dataTwo = new Data("Второй кластер", 76, 428, 776);
+            Data dataThree = new Data("Третий кластер", 554, 61, 3);
+            Data dataFour = new Data("Четвёртый кластер", 89, 63, 11);
+            Data dataFive = new Data("Пятый кластер", 10, 921, 65);
 
-            foreach (Data d in data) {
-                d.printInfo();
-            }
+            List<Data> allData = new List<Data> {dataOne, dataTwo, dataThree, dataFour, dataFive};
 
+            foreach (Data data in allData) data.printInfo();
+            
             Console.WriteLine("----------------------------------------------------------");
-            /*
-            DataContractJsonSerializer json = new DataContractJsonSerializer(typeof(Data[]));
+            
+            DataContractJsonSerializer json = new DataContractJsonSerializer(typeof(List<Data>));
 
             using (FileStream fs = new FileStream("data.json", FileMode.OpenOrCreate)) {
-                json.WriteObject(fs, data);
+                json.WriteObject(fs, allData);
                 Console.WriteLine("Объекты записаны в файл!");
             }
 
             Console.WriteLine("----------------------------------------------------------");
 
             using (FileStream fs = new FileStream("data.json", FileMode.OpenOrCreate)) {
-                Data[] datas = (Data[]) json.ReadObject(fs);
+                List<Data> datas = (List<Data>) json.ReadObject(fs);
                 Console.WriteLine("Объекты загружены из файла!");
 
                 foreach (Data d in datas) {
                     d.printInfo();
                 }
             }
-            */
         }
-
-
     }
 }
+S
