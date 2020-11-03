@@ -13,7 +13,7 @@ namespace PingPong {
 
         private int horizontalBallSpeed = 2;
         private int verticalBallSpeed = 2;
-        int panelSpeed = 25;
+        int panelSpeed = 50;
 
         private int score = 0;
 
@@ -31,33 +31,85 @@ namespace PingPong {
             this.Bounds = Screen.PrimaryScreen.Bounds;
 
             gamePanel.Top = background.Bottom - (background.Bottom / 10);   //Положение Панели (10% снизу)
+
+
+            gameBall.Left = 50;
+            gameBall.Top = 50;
+            gamePanel.Left = (background.Width / 2) - (gamePanel.Width / 2);
+
+
+            gameOver.Left = (background.Width / 2) - (gameOver.Width / 2);
+            gameOver.Top = (background.Height / 2) - (gameOver.Height / 2);
+
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e) {
             if (e.KeyCode == Keys.Escape) this.Close();     //При нажатие на Esc будет закрывать окно
 
-            //Клавиша A - Влево
-            if (e.KeyCode == Keys.A && gamePanel.Left >= background.Left) {
-                gamePanel.Left -= panelSpeed;
+            //Клавиша Пробел - Рестар игры
+            if (e.KeyCode == Keys.Space && timer.Enabled == false) {
+                gameBall.Left = 50;
+                gameBall.Top = 50;
+                gamePanel.Left = (background.Width / 2) - (gamePanel.Width / 2);
+                gamePanel.Top = background.Bottom - (background.Bottom / 10);
+
+                horizontalBallSpeed = 2;
+                verticalBallSpeed = 2;
+
+                gameOver.Visible = false;
+                result.Text = "RESULT: 0";
+                score = 0;
+                timer.Enabled = true;
             }
 
-            //Клавиша D - Вправо
-            if (e.KeyCode == Keys.D && gamePanel.Right <= background.Right) {
-                gamePanel.Left += panelSpeed;
+            //Клавиша P - Остановить игру
+            if (e.KeyCode == Keys.P && timer.Enabled == true) {
+
+                timer.Enabled = false;
+                gameBall.Visible = false;
+                gamePanel.Visible = false;
+
+                gameOver.Text = "PAUSE";
+                gameOver.Left = (background.Width / 2) - (gameOver.Width / 2);
+                gameOver.Visible = true;
             }
 
-            //Клавиша W - Вверх до возможного придела
-            int panelTopBorder = background.Bottom - ((background.Bottom / 10) * 5);
+            //Клавиша G - Продолжить игру
+            if (e.KeyCode == Keys.G && timer.Enabled == false) {
 
-            if (e.KeyCode == Keys.W && gamePanel.Top > panelTopBorder) {
-                gamePanel.Top -= panelSpeed;
+                timer.Enabled = true;
+                gameBall.Visible = true;
+                gamePanel.Visible = true;
+
+                gameOver.Text = "GAME OVER";
+                gameOver.Left = (background.Width / 2) - (gameOver.Width / 2);
+                gameOver.Visible = false;
             }
 
-            //Клавиша S - Вниз до возможного придела
-            int panelBottomBorder = background.Bottom - (background.Bottom / 10);
+            if (timer.Enabled == true) {
+                //Клавиша A - Влево
+                if (e.KeyCode == Keys.A && gamePanel.Left >= background.Left) {
+                    gamePanel.Left -= panelSpeed;
+                }
 
-            if (e.KeyCode == Keys.S && gamePanel.Bottom < panelBottomBorder) {
-                gamePanel.Top += panelSpeed;
+                //Клавиша D - Вправо
+                if (e.KeyCode == Keys.D && gamePanel.Right <= background.Right) {
+                    gamePanel.Left += panelSpeed;
+                }
+
+                //Клавиша W - Вверх до возможного придела
+                int panelTopBorder = background.Bottom - ((background.Bottom / 10) * 5);
+
+                if (e.KeyCode == Keys.W && gamePanel.Top > panelTopBorder) {
+                    gamePanel.Top -= panelSpeed;
+                }
+
+                //Клавиша S - Вниз до возможного придела
+                int panelBottomBorder = background.Bottom - (background.Bottom / 10);
+
+                if (e.KeyCode == Keys.S && gamePanel.Bottom < panelBottomBorder) {
+                    gamePanel.Top += panelSpeed;
+                }
             }
         }
 
@@ -82,6 +134,8 @@ namespace PingPong {
 
             if (gameBall.Bottom >= background.Bottom) {
                 timer.Enabled = false;
+
+                gameOver.Visible = true;
             }
 
             if (gameBall.Bottom >= gamePanel.Top 
@@ -89,12 +143,16 @@ namespace PingPong {
                 && gameBall.Left >= gamePanel.Left
                 && gameBall.Right <= gamePanel.Right) {
 
-                horizontalBallSpeed += 2;
-                verticalBallSpeed += 2;
+                horizontalBallSpeed += 1;
+                verticalBallSpeed += 1;
 
                 verticalBallSpeed *= -1;
 
                 score++;
+                result.Text = "RESULT: " + score;
+
+                Random randomColor = new Random();
+                gameBall.BackColor = Color.FromArgb(randomColor.Next(100, 200), randomColor.Next(100, 200), randomColor.Next(100, 200));
             }
 
         }
