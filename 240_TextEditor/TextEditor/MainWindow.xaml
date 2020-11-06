@@ -1,0 +1,75 @@
+﻿<Window x:Class="TextEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TextEditor"
+        mc:Ignorable="d"
+        Title="Простой текстовый редактор" Height="450" Width="800" 
+        ResizeMode="NoResize" Topmost="False" WindowState="Normal" 
+        Icon="./Resources/icon.png">
+
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem x:Name="menuFile" Header="Файл">
+                <MenuItem x:Name="newFile" Header="Новый файл" Click="newFile_Click">
+                    <MenuItem.Icon>
+                        <Image Source="./Resources/newFile.ico" Height="15" Width="15"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="openFile" Header="Открыть файл" Click="openFile_Click">
+                    <MenuItem.Icon>
+                        <Image Source="./Resources/openFile.ico" Height="15" Width="15"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="saveFile" Header="Сохранить файл" Click="saveFile_Click">
+                    <MenuItem.Icon>
+                        <Image Source="./Resources/save.ico" Height="15" Width="15"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="exit" Header="Выйти" Click="exit_Click">
+                    <MenuItem.Icon>
+                        <Image Source="./Resources/exit.ico" Height="15" Width="15"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+
+            <MenuItem x:Name="menuEdit" Header="Редактировать">
+                <MenuItem x:Name="selectFont" Header="Шрифт">
+                    <MenuItem.Icon>
+                        <Image Source="./Resources/font.ico" Height="15" Width="15"/>
+                    </MenuItem.Icon>
+                    <MenuItem x:Name="fontTimesNewRoman" Header="Times New Roman" FontFamily="Times New Roman"
+                              IsCheckable="True" StaysOpenOnClick="True" Click="fontTimesNewRoman_Click"/>
+                    <MenuItem x:Name="fontVerdane" Header="Verdana" FontFamily="Verdana"
+                              IsCheckable="True" StaysOpenOnClick="True" Click="fontVerdane_Click"/>
+                </MenuItem>
+                <Separator/>
+                <MenuItem x:Name="copyText" Header="Копировать" 
+                          Command="ApplicationCommands.Copy">
+                    <MenuItem.Icon>
+                        <Image Source="./Resources/copyText.ico" Height="15" Width="15"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="pasteText" Header="Вставить" 
+                          Command="ApplicationCommands.Paste">
+                    <MenuItem.Icon>
+                        <Image Source="./Resources/pasteText.ico" Height="15" Width="15"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="cutText" Header="Вырезать" 
+                          Command="ApplicationCommands.Cut">
+                    <MenuItem.Icon>
+                        <Image Source="./Resources/cutText.ico" Height="15" Width="15"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+
+            </MenuItem>
+
+        </Menu>
+
+        <TextBox x:Name="textArea" Width="780" Margin="0,0,0,1"/>
+
+    </DockPanel>
+
+</Window>
