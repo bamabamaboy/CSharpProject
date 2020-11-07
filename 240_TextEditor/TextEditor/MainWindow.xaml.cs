@@ -127,5 +127,15 @@ namespace TextEditor {
             textBlack.IsChecked = false;
             textWhite.IsChecked = false;
         }
+
+        private void selectFontSize_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            string fontSize = selectFontSize.SelectedItem.ToString();
+
+            int i = fontSize.IndexOf(" ");
+            if (i != -1) {
+                fontSize = fontSize.Substring(i);
+                textArea.FontSize = Convert.ToInt32(fontSize);
+            }
+        }
     }
 }

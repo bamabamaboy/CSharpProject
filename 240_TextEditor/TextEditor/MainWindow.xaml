@@ -63,7 +63,6 @@
                         <Image Source="./Resources/cutText.ico" Height="15" Width="15"/>
                     </MenuItem.Icon>
                 </MenuItem>
-
             </MenuItem>
 
             <MenuItem x:Name="menuView" Header="Вид">
@@ -79,10 +78,45 @@
                     <MenuItem x:Name="textRed" Header="Красный" IsCheckable="True" StaysOpenOnClick="True" Click="textRed_Click"/>
                 </MenuItem>
             </MenuItem>
-
         </Menu>
 
-        <TextBox x:Name="textArea" Width="780" Margin="0,0,0,1"/>
+        <ToolBarTray DockPanel.Dock="Top">
+
+            <ToolBar>
+                <Button x:Name="btnSaveFile" ToolTip="Сохранить файл" Click="saveFile_Click">
+                    <Image Source="./Resources/save.ico" Height="20" Width="20" />
+                </Button>
+                <Button x:Name="btnOpenFile" ToolTip="Открыть файл" Click="openFile_Click">
+                    <Image Source="./Resources/openFile.ico" Height="20" Width="20" />
+                </Button>
+                <Separator/>
+                <Button x:Name="btnCopyText" ToolTip="Копировать" Command="ApplicationCommands.Copy">
+                    <Image Source="./Resources/copyText.ico" Height="20" Width="20" />
+                </Button>
+                <Button x:Name="btnCutText" ToolTip="Вырезать" Command="ApplicationCommands.Cut">
+                    <Image Source="./Resources/cutText.ico" Height="20" Width="20" />
+                </Button>
+                <Button x:Name="btnPasteText" ToolTip="Вставить" Command="ApplicationCommands.Paste">
+                    <Image Source="./Resources/pasteText.ico" Height="20" Width="20" />
+                </Button>
+                <Separator/>
+
+                <Label Content="Размер шрифта:"/>
+                <ComboBox x:Name="selectFontSize" SelectionChanged="selectFontSize_SelectionChanged">
+                    <ComboBoxItem>8</ComboBoxItem>
+                    <ComboBoxItem IsSelected="True">14</ComboBoxItem>
+                    <ComboBoxItem>18</ComboBoxItem>
+                    <ComboBoxItem>22</ComboBoxItem>
+                    <ComboBoxItem>28</ComboBoxItem>
+                    <ComboBoxItem>32</ComboBoxItem>
+                    <ComboBoxItem>48</ComboBoxItem>
+                </ComboBox>
+
+            </ToolBar>
+            
+        </ToolBarTray>
+        
+        <TextBox x:Name="textArea" Width="780" Margin="0,0,0,1" FontSize="14"/>
 
     </DockPanel>
 
