@@ -66,6 +66,20 @@
 
             </MenuItem>
 
+            <MenuItem x:Name="menuView" Header="Вид">
+                <MenuItem x:Name="selectBackColor" Header="Цвет фона">
+                    <MenuItem x:Name="backWhite" Header="Белый" IsCheckable="True" StaysOpenOnClick="True" Click="backWhite_Click"/>
+                    <MenuItem x:Name="backBlack" Header="Чёрный" IsCheckable="True" StaysOpenOnClick="True" Click="backBlack_Click"/>
+                    <MenuItem x:Name="backBlue" Header="Синий" IsCheckable="True" StaysOpenOnClick="True" Click="backBlue_Click"/>
+                </MenuItem>
+
+                <MenuItem x:Name="selectTextColor" Header="Цвет текста">
+                    <MenuItem x:Name="textBlack" Header="Чёрный" IsCheckable="True" StaysOpenOnClick="True" Click="textBlack_Click"/>
+                    <MenuItem x:Name="textWhite" Header="Белый" IsCheckable="True" StaysOpenOnClick="True" Click="textWhite_Click"/>
+                    <MenuItem x:Name="textRed" Header="Красный" IsCheckable="True" StaysOpenOnClick="True" Click="textRed_Click"/>
+                </MenuItem>
+            </MenuItem>
+
         </Menu>
 
         <TextBox x:Name="textArea" Width="780" Margin="0,0,0,1"/>
