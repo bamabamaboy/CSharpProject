@@ -80,7 +80,7 @@
             </MenuItem>
         </Menu>
 
-        <ToolBarTray DockPanel.Dock="Top">
+        <ToolBarTray DockPanel.Dock="Left" Orientation="Vertical">
 
             <ToolBar>
                 <Button x:Name="btnSaveFile" ToolTip="Сохранить файл" Click="saveFile_Click">
@@ -101,7 +101,7 @@
                 </Button>
                 <Separator/>
 
-                <Label Content="Размер шрифта:"/>
+                <Label Content="Размер:"/>
                 <ComboBox x:Name="selectFontSize" SelectionChanged="selectFontSize_SelectionChanged">
                     <ComboBoxItem>8</ComboBoxItem>
                     <ComboBoxItem IsSelected="True">14</ComboBoxItem>
@@ -112,6 +112,15 @@
                     <ComboBoxItem>48</ComboBoxItem>
                 </ComboBox>
 
+            </ToolBar>
+            
+        </ToolBarTray>
+
+        <ToolBarTray DockPanel.Dock="Bottom">
+
+            <ToolBar>
+                <Label Content="Поиск:"/>
+                <TextBox Foreground="White" Text="Проверка поиска"  Background="#ccc" Width="300" Height="20"/>
             </ToolBar>
             
         </ToolBarTray>
