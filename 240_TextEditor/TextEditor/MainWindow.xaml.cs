@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,17 +35,43 @@ namespace TextEditor {
 
         //Меню - Файл
         private void newFile_Click(object sender, RoutedEventArgs e) {
+            if (textArea.Text != "") {
+                saveToFile();
+            }
 
+            textArea.Text = "";
         }
 
         private void openFile_Click(object sender, RoutedEventArgs e) {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.ShowDialog();
+            
+            bool? res = ofd.ShowDialog();
+
+            if(res != false) {
+                Stream s;
+                if ((s = ofd.OpenFile()) != null) {
+                    string fileName = ofd.FileName;
+                    string fileText = File.ReadAllText(fileName);
+                    textArea.Text = fileText;
+                }
+            }
         }
 
         private void saveFile_Click(object sender, RoutedEventArgs e) {
+            saveToFile();
+        }
+
+        private void saveToFile() {
             SaveFileDialog sfd = new SaveFileDialog();
-            sfd.ShowDialog();
+            bool? res = sfd.ShowDialog();
+
+            if (res != false) {
+                using (Stream s = File.Open(sfd.FileName, FileMode.OpenOrCreate)) {
+                    using (StreamWriter sw = new StreamWriter(s)) {
+                        sw.Write(textArea.Text);
+                    }
+                }
+            }
         }
 
         private void exit_Click(object sender, RoutedEventArgs e) {
