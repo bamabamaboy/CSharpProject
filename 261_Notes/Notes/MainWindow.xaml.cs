@@ -22,6 +22,8 @@ namespace Notes {
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent();
+
+            btn1.IsChecked = true;
         }
 
         private void btnOpen_Click(object sender, RoutedEventArgs e) {
