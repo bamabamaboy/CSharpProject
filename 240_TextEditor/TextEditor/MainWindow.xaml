@@ -122,7 +122,7 @@
                     <Label x:Name="label" Content="Регистрация в программе" Foreground="#D17F6F" HorizontalAlignment="Center" Margin="0,30,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" FontFamily="Courier New"/>
                     <TextBox x:Name="loginField" Foreground="Black" HorizontalAlignment="Center" Background="#8AE6D0" Height="45" Width="300" Margin="0,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Center" FontSize="24" FontWeight="Bold" FontFamily="Courier New"/>
                     <PasswordBox x:Name="passwordField" Foreground="Black" HorizontalAlignment="Center" Background="#8AE6D0" Height="45" Width="300" Margin="0,175,0,0" VerticalAlignment="Top" FontSize="24"/>
-                    <Button x:Name="btnReg" Foreground="White" Background="#437065"  Content="Регистрация" HorizontalAlignment="Center" Margin="0,250,0,0" VerticalAlignment="Top" Height="40" Width="200" FontWeight="Bold" FontFamily="Courier New" FontSize="24" />
+                    <Button x:Name="btnReg" Foreground="White" Background="#437065"  Content="Регистрация" HorizontalAlignment="Center" Margin="0,250,0,0" VerticalAlignment="Top" Height="40" Width="200" FontWeight="Bold" FontFamily="Courier New" FontSize="24" Click="btnReg_Click"/>
                 </Grid>
             </TabItem>
             

@@ -23,9 +23,12 @@ namespace TextEditor {
 
     public partial class MainWindow : Window {
 
+        AppContext db;
+
         public MainWindow() {
             InitializeComponent();
 
+            db = new AppContext();
 
             textArea.Background = Brushes.White;
             backWhite.IsChecked = true;
@@ -163,6 +166,31 @@ namespace TextEditor {
                 fontSize = fontSize.Substring(i);
                 textArea.FontSize = Convert.ToInt32(fontSize);
             }
+        }
+
+        private void btnReg_Click(object sender, RoutedEventArgs e) {
+
+            string login = loginField.Text;
+            string password = passwordField.Password;
+
+            if (login.Length < 4) {
+                loginField.Background = Brushes.Red;
+                loginField.ToolTip = "Некорректно заполнено";
+            } else if (password.Length < 4) {
+                passwordField.Background = Brushes.Red;
+                passwordField.ToolTip = "Некорректно заполнено";
+            } else {
+                loginField.Background = Brushes.Transparent;
+                passwordField.Background = Brushes.Transparent;
+
+                User user = new User(login, password);
+                db.Users.Add(user);
+                db.SaveChanges();   //Для того, чтобы синхронизировать изменения в БД, чтобы там появилась запись
+
+                MessageBox.Show($"Пользователь({login}) добавлен!");
+            }
+
+
         }
     }
 }
