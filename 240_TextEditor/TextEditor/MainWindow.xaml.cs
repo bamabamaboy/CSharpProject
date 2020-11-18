@@ -30,6 +30,9 @@ namespace TextEditor {
 
             db = new AppContext();
 
+            loadAllUsers();
+            tabUsers.Visibility = Visibility.Collapsed;
+
             textArea.Background = Brushes.White;
             backWhite.IsChecked = true;
             textArea.Foreground = Brushes.Black;
@@ -183,14 +186,44 @@ namespace TextEditor {
                 loginField.Background = Brushes.Transparent;
                 passwordField.Background = Brushes.Transparent;
 
+                /*
                 User user = new User(login, password);
                 db.Users.Add(user);
                 db.SaveChanges();   //Для того, чтобы синхронизировать изменения в БД, чтобы там появилась запись
+                */
 
-                MessageBox.Show($"Пользователь({login}) добавлен!");
+                User user = null;
+                user = db.Users.Where(i => i.Login == login && i.Password == password).FirstOrDefault();
+
+                if (user != null) {
+
+                    tabUsers.Visibility = Visibility.Visible;
+                    tabUsers.IsSelected = true;
+                    //MessageBox.Show("Пользователь авторизован!");
+
+
+                } else {
+                    user = db.Users.Where(i => i.Login == login).FirstOrDefault();
+
+                    if (user != null) {
+                        MessageBox.Show("Данный логин занят, воспользуйтесь другим!");
+                    } else {
+                        user = new User(login, password);
+                        db.Users.Add(user);
+                        db.SaveChanges();
+                        loadAllUsers();
+
+                        MessageBox.Show($"Новый пользователь({login}) добавлен!");
+                    }
+                }
+
             }
 
+        }
 
+        private void loadAllUsers() {
+            List<User> users = db.Users.ToList();
+            usersList.ItemsSource = users;
         }
     }
 }

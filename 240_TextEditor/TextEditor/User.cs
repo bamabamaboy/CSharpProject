@@ -28,5 +28,11 @@ namespace TextEditor {
             this.login = login;
             this.password = password;
         }
+
+        /*
+        public override string ToString() {
+            return "Пользователь: " + Login + " (Пароль: " + Password + ")";
+        }
+        */
     }
 }

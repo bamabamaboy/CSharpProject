@@ -116,13 +116,31 @@
 
         </ToolBarTray>
 
-        <TabControl>
+        <TabControl x:Name="tabControl">
             <TabItem Header="Регистарция">
                 <Grid Background="#418080">
                     <Label x:Name="label" Content="Регистрация в программе" Foreground="#D17F6F" HorizontalAlignment="Center" Margin="0,30,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" FontFamily="Courier New"/>
                     <TextBox x:Name="loginField" Foreground="Black" HorizontalAlignment="Center" Background="#8AE6D0" Height="45" Width="300" Margin="0,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Center" FontSize="24" FontWeight="Bold" FontFamily="Courier New"/>
                     <PasswordBox x:Name="passwordField" Foreground="Black" HorizontalAlignment="Center" Background="#8AE6D0" Height="45" Width="300" Margin="0,175,0,0" VerticalAlignment="Top" FontSize="24"/>
                     <Button x:Name="btnReg" Foreground="White" Background="#437065"  Content="Регистрация" HorizontalAlignment="Center" Margin="0,250,0,0" VerticalAlignment="Top" Height="40" Width="200" FontWeight="Bold" FontFamily="Courier New" FontSize="24" Click="btnReg_Click"/>
+                </Grid>
+            </TabItem>
+
+            <TabItem x:Name="tabUsers" Header="Пользователи">
+                <Grid Background="#418080">
+                    <ListView x:Name="usersList">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <WrapPanel>
+                                    <TextBlock Text="Пользователь: " FontWeight="Bold"/>
+                                    <TextBlock Text="{Binding Login}"/>
+                                    <TextBlock Text=" (Пароль: "/>
+                                    <TextBlock Text="{Binding Password}"/>
+                                    <TextBlock Text=")"/>
+                                </WrapPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                 </Grid>
             </TabItem>
             
@@ -137,7 +155,8 @@
                     <TextBox x:Name="textArea" FontSize="14"/>
                 </DockPanel>
             </TabItem>
-            
+
+
         </TabControl>
 
     </DockPanel>
